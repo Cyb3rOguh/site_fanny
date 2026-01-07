@@ -1,7 +1,18 @@
 // src/Colo.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Colo: React.FC = () => {
+  const items = [
+    { id: '1', label: 'salut' },
+    { id: '2', label: 'Cell 2' },
+    { id: '3', label: 'Cell 3' },
+    { id: '4', label: 'Cell 4' },
+    { id: '5', label: 'Cell 5' },
+    { id: '6', label: 'Cell 6' },
+    { id: '7', label: 'Cell 7' },
+  ];
+
   return (
     <div style={{
       display: 'grid',
@@ -11,13 +22,27 @@ const Colo: React.FC = () => {
       backgroundColor: '#f0f0f0',
       fontFamily: 'Arial, sans-serif'
     }}>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>salut</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 2</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 3</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 4</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 5</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 6</div>
-      <div style={{ backgroundColor: '#ddd', padding: '1rem', textAlign: 'center' }}>Cell 7</div>
+      {items.map(item => (
+        <Link
+          key={item.id}
+          to={`/colo/${item.id}`}
+          style={{
+            backgroundColor: '#ddd',
+            padding: '1rem',
+            textAlign: 'center',
+            textDecoration: 'none',
+            color: '#000',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            fontWeight: 'bold',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ccc'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddd'}
+        >
+          {item.label}
+        </Link>
+      ))}
     </div>
   );
 };
