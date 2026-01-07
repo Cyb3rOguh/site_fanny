@@ -1,6 +1,19 @@
 // src/Photo.tsx
 import React from 'react';
 
+const photos = [
+  'Collab-David-Haefeli.webp',
+  'Filipa.webp',
+  'Hugo-1.webp',
+  'Hugo-2.webp',
+  'Laurent.webp',
+  'Mais.webp',
+  'Moon-Filipa-1.webp',
+  'Moon-Filipa-2.webp',
+  'Samantha.webp',
+  'Tapis.webp',
+];
+
 const Photo: React.FC = () => {
   return (
     <div style={{ marginBottom: '2rem' }}>
@@ -23,25 +36,35 @@ const Photo: React.FC = () => {
         gap: '1rem',
         padding: '1rem',
         backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '8px'
+        gridAutoRows: 'auto', // 👈 Let rows auto-size
       }}>
-        {Array.from({ length: 6 }).map((_, i) => (
+        {photos.map((photo, i) => (
           <div
             key={i}
             style={{
               backgroundColor: '#eee',
-              padding: '1rem',
-              textAlign: 'center',
-              height: '200px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              padding: '0.5rem',
               border: '1px solid #ccc',
-              borderRadius: '8px'
+              borderRadius: '8px',
+              overflow: 'hidden',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // No fixed height/width — let image dictate size
             }}
           >
-            Photo {i + 1}
+            <img
+              src={`/Photos/${photo}`}
+              alt={photo.replace('.webp', '').replace(/-/g, ' ')}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '300px', // 👈 Optional: cap max height for very tall images
+                objectFit: 'contain', // 👈 Preserve aspect ratio, no crop
+                objectPosition: 'center',
+                borderRadius: '4px',
+                // Allow image to set its own size
+              }}
+            />
           </div>
         ))}
       </div>
