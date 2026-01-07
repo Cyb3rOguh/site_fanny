@@ -10,12 +10,18 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
-        <Hero />
-        <Colo />
-        <Photo />
-
-        {/* Define routes */}
+        {/* Only render Hero, Colo, Photo on the root route */}
         <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Colo />
+                <Photo />
+              </>
+            }
+          />
           <Route path="/colo/:id" element={<ColoDetail />} />
         </Routes>
       </div>
