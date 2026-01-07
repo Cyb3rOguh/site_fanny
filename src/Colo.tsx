@@ -15,34 +15,51 @@ const Colo: React.FC = () => {
 
   return (
     <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '1rem',
-      padding: '2rem',
-      backgroundColor: '#f0f0f0',
-      fontFamily: 'Arial, sans-serif'
+      marginBottom: '2rem'
     }}>
-      {items.map(item => (
-        <Link
-          key={item.id}
-          to={`/colo/${item.id}`}
-          style={{
-            backgroundColor: '#ddd',
-            padding: '1rem',
-            textAlign: 'center',
-            textDecoration: 'none',
-            color: '#000',
-            borderRadius: '4px',
-            border: '1px solid #ccc',
-            fontWeight: 'bold',
-            transition: 'background-color 0.2s'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ccc'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddd'}
-        >
-          {item.label}
-        </Link>
-      ))}
+      {/* Label */}
+      <h2 style={{
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        marginBottom: '1rem',
+        textAlign: 'center',
+        color: '#333'
+      }}>
+        Colorimétrie
+      </h2>
+
+      {/* Grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '1rem',
+        padding: '2rem',
+        backgroundColor: '#f0f0f0',
+        fontFamily: 'Arial, sans-serif'
+      }}>
+        {items.map(item => (
+          <Link
+            key={item.id}
+            to={`/colo/${item.id}`}
+            style={{
+              backgroundColor: '#ddd',
+              padding: '1rem',
+              textAlign: 'center',
+              textDecoration: 'none',
+              color: '#000',
+              borderRadius: '4px',
+              border: '1px solid #ccc',
+              fontWeight: 'bold',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ccc'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddd'}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
