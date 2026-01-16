@@ -18,7 +18,7 @@ const photos = [
 const Photo: React.FC = () => {
   return (
     <section className="photo-section">
-      <h1 className="photo-title">Photo</h1>
+      <h1 className="photo-title">Photos</h1>
 
       <div className="photo-masonry">
         {photos.map((photo, i) => (
