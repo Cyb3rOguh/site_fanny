@@ -54,8 +54,36 @@ const Hero: React.FC = () => {
       const img = images.current[currentFrame.current];
       if (!img || !img.complete || img.naturalWidth === 0) return;
 
-      contextRef.current.clearRect(0, 0, safeCanvas.width, safeCanvas.height);
-      contextRef.current.drawImage(img, 0, 0, safeCanvas.width, safeCanvas.height);
+      const canvasWidth = safeCanvas.width;
+      const canvasHeight = safeCanvas.height;
+      const maxDrawWidth = canvasWidth * 0.8; // 80vw cap
+
+      const imgWidth = img.naturalWidth;
+      const imgHeight = img.naturalHeight;
+
+      const canvasRatio = canvasWidth / canvasHeight;
+      const imgRatio = imgWidth / imgHeight;
+
+      let drawWidth = maxDrawWidth;
+      let drawHeight = drawWidth / imgRatio;
+
+      // If height overflows viewport, clamp by height instead
+      if (drawHeight > canvasHeight) {
+        drawHeight = canvasHeight;
+        drawWidth = drawHeight * imgRatio;
+      }
+
+      const offsetX = (canvasWidth - drawWidth) / 2;
+      const offsetY = (canvasHeight - drawHeight) / 2;
+
+      contextRef.current.clearRect(0, 0, canvasWidth, canvasHeight);
+      contextRef.current.drawImage(
+        img,
+        offsetX,
+        offsetY,
+        drawWidth,
+        drawHeight
+      );
     }
 
     function onScroll() {
