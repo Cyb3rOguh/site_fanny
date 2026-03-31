@@ -1,57 +1,156 @@
 // src/ColoDetail.tsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
-// Define the type for our content
-type ColoItem = {
-  title: string;
-  description: string;
-};
+import './ColoDetail.css';
 
 // Define valid IDs
 const VALID_IDS = ['1', '2', '3', '4', '5', '6', '7'] as const;
 type ColoId = typeof VALID_IDS[number];
 
+// Define the type for our content
+type ProjectData = {
+  title: string;
+  description: string;
+  images: string[]; // Array of image paths
+};
+
 const ColoDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  // Mock data — strongly typed
-  const content: Record<ColoId, ColoItem> = {
-    '1': { title: 'Salut', description: 'This is the first item.' },
-    '2': { title: 'Cell 2', description: 'This is the second item.' },
-    '3': { title: 'Cell 3', description: 'This is the third item.' },
-    '4': { title: 'Cell 4', description: 'This is the fourth item.' },
-    '5': { title: 'Cell 5', description: 'This is the fifth item.' },
-    '6': { title: 'Cell 6', description: 'This is the sixth item.' },
-    '7': { title: 'Cell 7', description: 'This is the seventh item.' },
+  // Data with specific images for each project
+  const content: Record<ColoId, ProjectData> = {
+    '1': {
+      title: 'CabaJJ',
+      description: 'Visual identity and stills for the Caballero & JeanJass project.',
+      images: [
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass2.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass3.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass4.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass5.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass6.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass7.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass8.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass9.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass10.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass11.webp',
+        '/Stills/CaballeroetJeanJass/CaballeroetJeanJass12.webp',
+      ]
+    },
+    '2': {
+      title: 'Mariage',
+      description: 'Editorial photography for the Mariage collection.',
+      images: [
+        '/Stills/Mariage/Mariage1.webp',
+        '/Stills/Mariage/Mariage2.webp',
+        '/Stills/Mariage/Mariage3.webp',
+        '/Stills/Mariage/Mariage4.webp',
+        '/Stills/Mariage/Mariage5.webp',
+      ]
+    },
+    '3': {
+      title: 'Miami Bass',
+      description: 'Vibrant colors and dynamic composition for Miami Bass.',
+      images: [
+        '/Stills/MiamiBass/MiamiBass1.webp',
+        '/Stills/MiamiBass/MiamiBass2.webp',
+        '/Stills/MiamiBass/MiamiBass3.webp',
+        '/Stills/MiamiBass/MiamiBass4.webp',
+        '/Stills/MiamiBass/MiamiBass5.webp',
+        '/Stills/MiamiBass/MiamiBass6.webp',
+        '/Stills/MiamiBass/MiamiBass7.webp',
+        '/Stills/MiamiBass/MiamiBass8.webp',
+        '/Stills/MiamiBass/MiamiBass9.webp',
+        '/Stills/MiamiBass/MiamiBass10.webp',
+        '/Stills/MiamiBass/MiamiBass11.webp',
+      ]
+    },
+    '4': {
+      title: 'Rivella',
+      description: 'Commercial stills for the Rivella campaign.',
+      images: [
+        '/Stills/Rivella/Rivella1.webp',
+        '/Stills/Rivella/Rivella2.webp',
+        '/Stills/Rivella/Rivella3.webp',
+        '/Stills/Rivella/Rivella4.webp',
+        '/Stills/Rivella/Rivella5.webp',
+      ]
+    },
+    '5': {
+      title: 'HesitOut',
+      description: 'High contrast black and white series.',
+      images: [
+        '/Stills/HesitOut/HeistOut1.webp',
+        '/Stills/HesitOut/HeistOut2.webp',
+        '/Stills/HesitOut/HeistOut3.webp',
+        '/Stills/HesitOut/HeistOut4.webp',
+        '/Stills/HesitOut/HeistOut5.webp',
+        '/Stills/HesitOut/HeistOut6.webp',
+        '/Stills/HesitOut/HeistOut7.webp',
+        '/Stills/HesitOut/HeistOut8.webp',
+        '/Stills/HesitOut/HeistOut9.webp',
+      ]
+    },
+    '6': {
+      title: 'AgeNouveau',
+      description: 'Modern aesthetics for the new era.',
+      images: [
+        '/Stills/AgeNouveau/AgeNouveau1.webp',
+        '/Stills/AgeNouveau/AgeNouveau3.webp',
+        '/Stills/AgeNouveau/AgeNouveau4.webp',
+        '/Stills/AgeNouveau/AgeNouveau5.webp',
+        '/Stills/AgeNouveau/AgeNouveau6.webp',
+        '/Stills/AgeNouveau/AgeNouveau7.webp',
+        '/Stills/AgeNouveau/AgeNouveau8.webp',
+        '/Stills/AgeNouveau/AgeNouveau9.webp',
+      ]
+    },
+    '7': {
+      title: 'Gagner',
+      description: 'Victory and motion captured in still frames.',
+      images: [
+        '/Stills/Gagner/GagnerCestBien1.webp',
+        '/Stills/Gagner/GagnerCestBien2.webp',
+        '/Stills/Gagner/GagnerCestBien3.webp',
+        '/Stills/Gagner/GagnerCestBien4.webp',
+        '/Stills/Gagner/GagnerCestBien5.webp',
+        '/Stills/Gagner/GagnerCestBien6.webp',
+      ]
+    },
   };
 
   // Safely get item — fallback to first item if invalid ID
-  const item = content[id as ColoId] || content['1'];
+  const project = content[id as ColoId] || content['1'];
+
+  const handleBack = () => {
+    window.history.back();
+  };
 
   return (
-    <div style={{
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      backgroundColor: '#fff',
-      minHeight: '100vh'
-    }}>
-      <h1>{item.title}</h1>
-      <p>{item.description}</p>
-      <button
-        onClick={() => window.history.back()}
-        style={{
-          marginTop: '1rem',
-          padding: '0.5rem 1rem',
-          backgroundColor: '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        }}
-      >
-        ← Back to Grid
-      </button>
+    <div className="detail-container">
+      <header className="detail-header">
+        <h1 className="detail-title">{project.title}</h1>
+        <p className="detail-description">{project.description}</p>
+        <button onClick={handleBack} className="detail-back-btn">
+          ← Back to Grid
+        </button>
+      </header>
+
+      <div className="detail-grid">
+        {project.images.map((imgSrc, index) => (
+          <div key={index} className="detail-grid-item">
+            <img 
+              src={imgSrc} 
+              alt={`${project.title} - Image ${index + 1}`} 
+              loading="lazy"
+              onError={(e) => {
+                // Fallback if image not found (optional)
+                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
+              }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
