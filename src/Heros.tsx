@@ -1,6 +1,6 @@
 // src/Hero.tsx
 import React, { useEffect, useRef } from 'react';
-import './Heros.css'; // 👈 Import the CSS file
+import './Heros.css';
 
 const FRAME_COUNT = 100; 
 
@@ -26,15 +26,15 @@ const Hero: React.FC = () => {
       render();
     };
 
-    // Preload images
+    // Preload images (Your existing logic)
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       const index = String(i + 1).padStart(4, '0');
+      // Ensure this path is correct relative to your 'public' folder
       img.src = `/title-sequence/title-${index}.webp`;
       images.current.push(img);
     }
 
-    // Start render once first image loads
     if (images.current[0]) {
       images.current[0].onload = () => {
         currentFrame.current = 0;
@@ -50,8 +50,13 @@ const Hero: React.FC = () => {
 
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
-      const maxDrawWidth = canvasWidth * 0.8; 
+      
+      // Optional: Clear only if you want transparency. 
+      // If your images are full rectangles, clearRect is good practice.
+      contextRef.current.clearRect(0, 0, canvasWidth, canvasHeight);
 
+      // Logic to center the image sequence (keeping your original scaling)
+      const maxDrawWidth = canvasWidth * 0.8; 
       const imgWidth = img.naturalWidth;
       const imgHeight = img.naturalHeight;
       const imgRatio = imgWidth / imgHeight;
@@ -67,7 +72,6 @@ const Hero: React.FC = () => {
       const offsetX = (canvasWidth - drawWidth) / 2;
       const offsetY = (canvasHeight - drawHeight) / 2;
 
-      contextRef.current.clearRect(0, 0, canvasWidth, canvasHeight);
       contextRef.current.drawImage(
         img,
         offsetX,
@@ -82,8 +86,6 @@ const Hero: React.FC = () => {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
           const windowHeight = window.innerHeight;
-          
-          // Adjust this multiplier to change speed
           const triggerDistance = windowHeight * 1.5; 
 
           const progress = Math.min(Math.max(scrollY / triggerDistance, 0), 1);
@@ -113,13 +115,29 @@ const Hero: React.FC = () => {
 
   return (
     <div className="hero-container">
+      {/* 1. Background Video */}
+      <video
+        className="hero-video-bg"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        {/* Replace with your actual video path */}
+        <source src="/herobg.mp4" type="video/mp4" />
+        
+      </video>
+
+      {/* 2. Image Sequence Canvas (Sits on top of video) */}
       <canvas
         ref={canvasRef}
         className="hero-canvas"
       />
       
-      {/* Optional: Uncomment if you want a title overlay */}
-      {/* <h1 className="hero-title">Fanny Vo</h1> */}
+      {/* 3. Optional Text Overlay (Sits on top of everything) */}
+      <div className="hero-content">
+        {/* <h1 className="hero-title">Fanny Vo</h1> */}
+      </div>
     </div>
   );
 };
