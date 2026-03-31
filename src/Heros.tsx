@@ -137,21 +137,10 @@ const Hero: React.FC = () => {
       />
       </div>
 
-      {/* Actual Content Section */}
-      <section
-      style={{
-        position: 'relative',
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#fff',
-        zIndex: 1,
-      }}
-      >
+      
       {/* You can add a title or CTA here if you want */}
       {/* <h1>Fanny Vo</h1> */}
-      </section>
+      
     </>
   );
 };
