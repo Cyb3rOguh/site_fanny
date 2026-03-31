@@ -1,5 +1,6 @@
 // src/Hero.tsx
 import React, { useEffect, useRef } from 'react';
+import './Heros.css'; // 👈 Import the CSS file
 
 const FRAME_COUNT = 100; 
 
@@ -45,7 +46,6 @@ const Hero: React.FC = () => {
       if (!contextRef.current || !canvas) return;
       const img = images.current[currentFrame.current];
       
-      // Safety check if image isn't loaded yet
       if (!img || !img.complete || img.naturalWidth === 0) return;
 
       const canvasWidth = canvas.width;
@@ -80,12 +80,10 @@ const Hero: React.FC = () => {
     function onScroll() {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          // Calculate progress based on total page scroll
           const scrollY = window.scrollY;
           const windowHeight = window.innerHeight;
           
-          // Define how many "screens" of scrolling should play the full animation
-          // 1.5 = Animation finishes after scrolling 1.5 screens down
+          // Adjust this multiplier to change speed
           const triggerDistance = windowHeight * 1.5; 
 
           const progress = Math.min(Math.max(scrollY / triggerDistance, 0), 1);
@@ -105,8 +103,6 @@ const Hero: React.FC = () => {
     resize();
     window.addEventListener('resize', resize);
     window.addEventListener('scroll', onScroll);
-    
-    // Trigger once on load
     onScroll();
 
     return () => {
@@ -116,32 +112,15 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <>
-      {/* Canvas Background - Not Fixed */}
-      <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        background: '#000',
-        pointerEvents: 'none',
-      }}
-      >
+    <div className="hero-container">
       <canvas
         ref={canvasRef}
-        style={{
-        width: '100%',
-        height: '100%',
-        display: 'block',
-        }}
+        className="hero-canvas"
       />
-      </div>
-
       
-      {/* You can add a title or CTA here if you want */}
-      {/* <h1>Fanny Vo</h1> */}
-      
-    </>
+      {/* Optional: Uncomment if you want a title overlay */}
+      {/* <h1 className="hero-title">Fanny Vo</h1> */}
+    </div>
   );
 };
 
