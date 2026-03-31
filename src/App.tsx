@@ -5,6 +5,7 @@ import Hero from './Heros';
 import Colo from './Colo';
 import Photo from './Photo';
 import ColoDetail from './ColoDetail';
+import './App.css';
 
 const App: React.FC = () => {
   return (

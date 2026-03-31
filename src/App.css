@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #ffebeb; /* Light blue background */
+  min-height: 100vh; /* Ensures it covers the full screen even if content is short */
 }
 
 .App-logo {
@@ -36,3 +38,5 @@
     transform: rotate(360deg);
   }
 }
+
+

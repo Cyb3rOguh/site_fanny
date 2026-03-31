@@ -117,43 +117,40 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      {/* Fixed Canvas Background */}
+      {/* Canvas Background - Not Fixed */}
       <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          zIndex: -1, // Puts canvas BEHIND your content
-          background: '#000',
-          pointerEvents: 'none', // Lets clicks pass through
-        }}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        background: '#000',
+        pointerEvents: 'none',
+      }}
       >
-        <canvas
-          ref={canvasRef}
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-          }}
-        />
+      <canvas
+        ref={canvasRef}
+        style={{
+        width: '100%',
+        height: '100%',
+        display: 'block',
+        }}
+      />
       </div>
 
-      {/* Actual Content Section (Only 100vh tall) */}
+      {/* Actual Content Section */}
       <section
-        style={{
-          position: 'relative',
-          height: '100vh', // Takes up exactly one screen
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#fff', // Ensure text is visible over black canvas
-          zIndex: 1,
-        }}
+      style={{
+        position: 'relative',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff',
+        zIndex: 1,
+      }}
       >
-        {/* You can add a title or CTA here if you want */}
-        {/* <h1>Fanny Vo</h1> */}
+      {/* You can add a title or CTA here if you want */}
+      {/* <h1>Fanny Vo</h1> */}
       </section>
     </>
   );
