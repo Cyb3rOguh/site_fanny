@@ -1,10 +1,9 @@
 // src/Hero.tsx
 import React, { useEffect, useRef } from 'react';
 
-const FRAME_COUNT = 100; // 🔁 change to your real frame count
+const FRAME_COUNT = 100; 
 
 const Hero: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const images = useRef<HTMLImageElement[]>([]);
@@ -13,11 +12,7 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const section = sectionRef.current;
-    if (!canvas || !section) return;
-
-    const safeCanvas = canvas;
-    const safeSection = section;
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -25,8 +20,8 @@ const Hero: React.FC = () => {
     contextRef.current = ctx;
 
     const resize = () => {
-      safeCanvas.width = window.innerWidth;
-      safeCanvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       render();
     };
 
@@ -34,40 +29,36 @@ const Hero: React.FC = () => {
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       const index = String(i + 1).padStart(4, '0');
-      img.onload = () => {
-        // no-op, ensures image is marked as loaded
-      };
-      img.onerror = () => {
-        console.warn(`Failed to load frame ${index}`);
-      };
       img.src = `/title-sequence/title-${index}.webp`;
       images.current.push(img);
     }
 
-    images.current[0].onload = () => {
-      currentFrame.current = 0;
-      render();
-    };
+    // Start render once first image loads
+    if (images.current[0]) {
+      images.current[0].onload = () => {
+        currentFrame.current = 0;
+        render();
+      };
+    }
 
     function render() {
-      if (!contextRef.current) return;
+      if (!contextRef.current || !canvas) return;
       const img = images.current[currentFrame.current];
+      
+      // Safety check if image isn't loaded yet
       if (!img || !img.complete || img.naturalWidth === 0) return;
 
-      const canvasWidth = safeCanvas.width;
-      const canvasHeight = safeCanvas.height;
-      const maxDrawWidth = canvasWidth * 0.8; // 80vw cap
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const maxDrawWidth = canvasWidth * 0.8; 
 
       const imgWidth = img.naturalWidth;
       const imgHeight = img.naturalHeight;
-
-      const canvasRatio = canvasWidth / canvasHeight;
       const imgRatio = imgWidth / imgHeight;
 
       let drawWidth = maxDrawWidth;
       let drawHeight = drawWidth / imgRatio;
 
-      // If height overflows viewport, clamp by height instead
       if (drawHeight > canvasHeight) {
         drawHeight = canvasHeight;
         drawWidth = drawHeight * imgRatio;
@@ -89,18 +80,16 @@ const Hero: React.FC = () => {
     function onScroll() {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          const rect = safeSection.getBoundingClientRect();
-          const scrollableHeight = safeSection.offsetHeight - window.innerHeight;
+          // Calculate progress based on total page scroll
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
           
-          // Prevent division by zero if section is too small
-          if (scrollableHeight <= 0) return;
+          // Define how many "screens" of scrolling should play the full animation
+          // 1.5 = Animation finishes after scrolling 1.5 screens down
+          const triggerDistance = windowHeight * 1.5; 
 
-          const scrollY = Math.min(
-            Math.max(-rect.top, 0),
-            scrollableHeight
-          );
-
-          const progress = scrollY / scrollableHeight;
+          const progress = Math.min(Math.max(scrollY / triggerDistance, 0), 1);
+          
           currentFrame.current = Math.min(
             FRAME_COUNT - 1,
             Math.floor(progress * FRAME_COUNT)
@@ -116,6 +105,9 @@ const Hero: React.FC = () => {
     resize();
     window.addEventListener('resize', resize);
     window.addEventListener('scroll', onScroll);
+    
+    // Trigger once on load
+    onScroll();
 
     return () => {
       window.removeEventListener('resize', resize);
@@ -124,23 +116,18 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        // 👇 CHANGE THIS VALUE to adjust scroll speed
-        // 150vh = sequence finishes after scrolling 0.5 screen heights
-        // 200vh = sequence finishes after scrolling 1 screen height
-        height: '150vh', 
-        background: '#000',
-      }}
-    >
+    <>
+      {/* Fixed Canvas Background */}
       <div
         style={{
-          position: 'sticky',
+          position: 'fixed',
           top: 0,
-          height: '100vh',
+          left: 0,
           width: '100%',
-          overflow: 'hidden',
+          height: '100vh',
+          zIndex: -1, // Puts canvas BEHIND your content
+          background: '#000',
+          pointerEvents: 'none', // Lets clicks pass through
         }}
       >
         <canvas
@@ -152,7 +139,23 @@ const Hero: React.FC = () => {
           }}
         />
       </div>
-    </section>
+
+      {/* Actual Content Section (Only 100vh tall) */}
+      <section
+        style={{
+          position: 'relative',
+          height: '100vh', // Takes up exactly one screen
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff', // Ensure text is visible over black canvas
+          zIndex: 1,
+        }}
+      >
+        {/* You can add a title or CTA here if you want */}
+        {/* <h1>Fanny Vo</h1> */}
+      </section>
+    </>
   );
 };
 
