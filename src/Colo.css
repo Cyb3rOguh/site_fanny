@@ -32,11 +32,10 @@
 .colo-item {
   display: block;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: none;
   overflow: hidden;
   position: relative;
   background-color: #000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   /* Enforce 16:9 Aspect Ratio */
@@ -54,8 +53,7 @@
 
 /* Hover Effects */
 .colo-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  
   z-index: 2;
 }
 
