@@ -91,6 +91,10 @@ const Hero: React.FC = () => {
         window.requestAnimationFrame(() => {
           const rect = safeSection.getBoundingClientRect();
           const scrollableHeight = safeSection.offsetHeight - window.innerHeight;
+          
+          // Prevent division by zero if section is too small
+          if (scrollableHeight <= 0) return;
+
           const scrollY = Math.min(
             Math.max(-rect.top, 0),
             scrollableHeight
@@ -123,7 +127,10 @@ const Hero: React.FC = () => {
     <section
       ref={sectionRef}
       style={{
-        height: '300vh',
+        // 👇 CHANGE THIS VALUE to adjust scroll speed
+        // 150vh = sequence finishes after scrolling 0.5 screen heights
+        // 200vh = sequence finishes after scrolling 1 screen height
+        height: '150vh', 
         background: '#000',
       }}
     >
