@@ -1,7 +1,21 @@
+/* src/App.css */
+
+/* 1. Define the custom font */
+@font-face {
+  font-family: 'WsPontac';
+  src: url('./fonts/WsPontac.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Improves loading performance */
+}
+
+/* 2. Apply the font to the App container */
 .App {
   text-align: center;
-  background-color: #ffebeb; /* Light blue background */
-  min-height: 100vh; /* Ensures it covers the full screen even if content is short */
+  background-color: #ffebeb;
+  min-height: 100vh;
+  /* Apply the font here */
+  font-family: 'WsPontac', 'Arial', sans-serif; 
 }
 
 .App-logo {
@@ -24,6 +38,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  /* Optionally override font for header if needed, otherwise it inherits from .App */
+  /* font-family: 'WsPontac', sans-serif; */
 }
 
 .App-link {
@@ -38,5 +54,3 @@
     transform: rotate(360deg);
   }
 }
-
-

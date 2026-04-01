@@ -3,20 +3,32 @@
 .colo-container {
   margin-bottom: 3rem;
   font-family: 'Arial', sans-serif;
-  max-width: 80%; /* Reduced width since it's a single column */
+  max-width: 60%; /* Reduced width since it's a single column */
   margin-left: auto;
   margin-right: auto;
   padding: 0 1rem;
 }
 
 .colo-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-size: 4rem;
+  margin-top: 64px;
+  margin-bottom: 32px;
   text-align: center;
-  color: #333;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-family: wsPontac, 'Arial', sans-serif; /* Use the custom font */
+  border: 1px solid #000000; /* Visible border around the title */
+}
+
+/* Adjusts font size and margins for screens smaller than 768px */
+@media (max-width: 768px) {
+  .colo-title {
+    font-size: 2rem; /* Reduced from 4rem */
+    margin-top: 32px; /* Optional: reduce top margin */
+    margin-bottom: 16px; /* Optional: reduce bottom margin */
+    letter-spacing: 1px; /* Optional: tighten spacing for small text */
+  }
 }
 
 .colo-grid {
@@ -35,8 +47,8 @@
   overflow: hidden;
   /* Visible grid border */
   border: 1px solid #000000; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 64px;
 }
 
 .colo-item-inner {
@@ -74,12 +86,12 @@
 /* Hover Effects */
 .colo-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  
   
 }
 
 .colo-item:hover .colo-image-wrapper img {
-  transform: scale(1.05); /* Subtle zoom */
+  transform: scale(1.03); /* Subtle zoom */
 }
 
 .colo-item:hover .colo-label {

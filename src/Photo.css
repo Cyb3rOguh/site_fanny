@@ -1,15 +1,16 @@
 .photo-section {
   padding: 2rem 1.5rem 4rem;
-  background: #fff;
+  background: none;
 }
 
 .photo-title {
-  font-family: Arial, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: wsPontac, 'Arial', sans-serif;
+  font-size: 4rem;
+  margin-top: 64px;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
   text-align: center;
-  margin-bottom: 2.5rem;
-  color: #111;
+  color: #000000;
 }
 
 /* Masonry layout */
@@ -30,6 +31,16 @@
 @media (max-width: 1024px) {
   .photo-masonry {
     column-count: 2;
+  } 
+}
+
+/* Adjusts font size and margins for screens smaller than 768px */
+@media (max-width: 768px) {
+  .photo-title {
+    font-size: 2rem; /* Reduced from 4rem */
+    margin-top: 32px; /* Optional: reduce top margin */
+    margin-bottom: 16px; /* Optional: reduce bottom margin */
+    letter-spacing: 1px; /* Optional: tighten spacing for small text */
   }
 }
 
