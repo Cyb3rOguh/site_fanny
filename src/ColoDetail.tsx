@@ -37,7 +37,7 @@ const ColoDetail: React.FC = () => {
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass12.webp',
       ]
     },
-    '2': {
+    '6': {
       title: 'Mariage',
       description: 'Editorial photography for the Mariage collection.',
       images: [
@@ -91,7 +91,7 @@ const ColoDetail: React.FC = () => {
         '/Stills/HesitOut/HeistOut9.webp',
       ]
     },
-    '6': {
+    '2': {
       title: 'AgeNouveau',
       description: 'Modern aesthetics for the new era.',
       images: [
@@ -132,7 +132,7 @@ const ColoDetail: React.FC = () => {
         <h1 className="detail-title">{project.title}</h1>
         <p className="detail-description">{project.description}</p>
         <button onClick={handleBack} className="detail-back-btn">
-          ← Back to Grid
+          ← Retour
         </button>
       </header>
 
