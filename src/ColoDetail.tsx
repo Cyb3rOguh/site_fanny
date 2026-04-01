@@ -20,8 +20,8 @@ const ColoDetail: React.FC = () => {
   // Data with specific images for each project
   const content: Record<ColoId, ProjectData> = {
     '1': {
-      title: 'CabaJJ',
-      description: 'Visual identity and stills for the Caballero & JeanJass project.',
+      title: 'ZUSHILEAKS - Caballero et JeanJass feat Chilly Gonzales',
+      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : [Nom du Directeur Photo]<br/>DOP : [Nom du Producteur]',
       images: [
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass.webp',
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass2.webp',
@@ -127,32 +127,37 @@ const ColoDetail: React.FC = () => {
   };
 
   return (
-    <div className="detail-container">
-      <header className="detail-header">
-        <h1 className="detail-title">{project.title}</h1>
-        <p className="detail-description">{project.description}</p>
-        <button onClick={handleBack} className="detail-back-btn">
-          ← Retour
-        </button>
-      </header>
+  <div className="detail-container">
+    <header className="detail-header">
+      <h1 className="detail-title">{project.title}</h1>
+      
+      {/* Replaced <p> with <div> and dangerouslySetInnerHTML */}
+      <div 
+        className="detail-description" 
+        dangerouslySetInnerHTML={{ __html: project.description }} 
+      />
 
-      <div className="detail-grid">
-        {project.images.map((imgSrc, index) => (
-          <div key={index} className="detail-grid-item">
-            <img 
-              src={imgSrc} 
-              alt={`${project.title} - Image ${index + 1}`} 
-              loading="lazy"
-              onError={(e) => {
-                // Fallback if image not found (optional)
-                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
-              }}
-            />
-          </div>
-        ))}
-      </div>
+      <button onClick={handleBack} className="detail-back-btn">
+        ← Retour
+      </button>
+    </header>
+
+    <div className="detail-grid">
+      {project.images.map((imgSrc, index) => (
+        <div key={index} className="detail-grid-item">
+          <img 
+            src={imgSrc} 
+            alt={`${project.title} - Image ${index + 1}`} 
+            loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
+            }}
+          />
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 };
 
 export default ColoDetail;
