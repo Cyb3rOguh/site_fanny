@@ -16,6 +16,9 @@
   font-display: swap; /* Improves loading performance */
 }
 
+body {
+  background-color: #ffe4f7;
+}
 
 .App-logo {
   height: 40vmin;
@@ -29,14 +32,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
   /* Optionally override font for header if needed, otherwise it inherits from .App */
   /* font-family: 'WsPontac', sans-serif; */
 }
