@@ -21,7 +21,7 @@ const ColoDetail: React.FC = () => {
   const content: Record<ColoId, ProjectData> = {
     '1': {
       title: 'ZUSHILEAKS - Caballero et JeanJass feat Chilly Gonzales',
-      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : [Nom du Directeur Photo]<br/>DOP : [Nom du Producteur]',
+      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : Call-me agency<br/>DOP : Valentin Deluy',
       images: [
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass.webp',
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass2.webp',
