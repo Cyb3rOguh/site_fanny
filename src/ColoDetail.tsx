@@ -21,7 +21,7 @@ const ColoDetail: React.FC = () => {
   const content: Record<ColoId, ProjectData> = {
     '1': {
       title: 'ZUSHILEAKS - Caballero et JeanJass feat Chilly Gonzales',
-      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : Call-me agency<br/>DOP : Valentin Deluy',
+      description: '<strong>Crédits</strong><br/>Réalisation : Augen<br/>Production : Call-me agency<br/>DOP : Valentin Deluy',
       images: [
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass.webp',
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass2.webp',
@@ -37,20 +37,24 @@ const ColoDetail: React.FC = () => {
         '/Stills/CaballeroetJeanJass/CaballeroetJeanJass12.webp',
       ]
     },
-    '6': {
-      title: 'Mariage',
-      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : Call-me agency<br/>DOP : Valentin Deluy',
+    '2': {
+      title: 'Age Nouveau',
+      description: '<strong>Crédits</strong><br/>Réalisation : Simon Bérard<br/>',
       images: [
-        '/Stills/Mariage/Mariage1.webp',
-        '/Stills/Mariage/Mariage2.webp',
-        '/Stills/Mariage/Mariage3.webp',
-        '/Stills/Mariage/Mariage4.webp',
-        '/Stills/Mariage/Mariage5.webp',
+        '/Stills/AgeNouveau/AgeNouveau1.webp',
+        '/Stills/AgeNouveau/AgeNouveau3.webp',
+        '/Stills/AgeNouveau/AgeNouveau4.webp',
+        '/Stills/AgeNouveau/AgeNouveau5.webp',
+        '/Stills/AgeNouveau/AgeNouveau6.webp',
+        '/Stills/AgeNouveau/AgeNouveau7.webp',
+        '/Stills/AgeNouveau/AgeNouveau8.webp',
+        '/Stills/AgeNouveau/AgeNouveau9.webp',
       ]
     },
+    
     '3': {
       title: 'Miami Bass',
-      description: 'Vibrant colors and dynamic composition for Miami Bass.',
+      description: '<strong>Crédits</strong><br/>Réalisation : Augen<br/>DOP : Loan Stauffer',
       images: [
         '/Stills/MiamiBass/MiamiBass1.webp',
         '/Stills/MiamiBass/MiamiBass2.webp',
@@ -67,7 +71,7 @@ const ColoDetail: React.FC = () => {
     },
     '4': {
       title: 'Rivella',
-      description: 'Commercial stills for the Rivella campaign.',
+      description: '<strong>Crédits</strong><br/>Réalisation : Fanny Diêu Vo',
       images: [
         '/Stills/Rivella/Rivella1.webp',
         '/Stills/Rivella/Rivella2.webp',
@@ -78,7 +82,7 @@ const ColoDetail: React.FC = () => {
     },
     '5': {
       title: 'HesitOut',
-      description: 'High contrast black and white series.',
+      description: '<strong>Crédits</strong><br/>Réalisation : Robin Spycher',
       images: [
         '/Stills/HesitOut/HeistOut1.webp',
         '/Stills/HesitOut/HeistOut2.webp',
@@ -91,23 +95,21 @@ const ColoDetail: React.FC = () => {
         '/Stills/HesitOut/HeistOut9.webp',
       ]
     },
-    '2': {
-      title: 'Age Nouveau',
-      description: '<strong>Credits</strong><br/>Réalisation : Simon Bérard<br/>',
+    '6': {
+      title: 'Mariage',
+      description: '<strong>Crédits</strong><br/>Réalisation : Sylvain Richoz',
       images: [
-        '/Stills/AgeNouveau/AgeNouveau1.webp',
-        '/Stills/AgeNouveau/AgeNouveau3.webp',
-        '/Stills/AgeNouveau/AgeNouveau4.webp',
-        '/Stills/AgeNouveau/AgeNouveau5.webp',
-        '/Stills/AgeNouveau/AgeNouveau6.webp',
-        '/Stills/AgeNouveau/AgeNouveau7.webp',
-        '/Stills/AgeNouveau/AgeNouveau8.webp',
-        '/Stills/AgeNouveau/AgeNouveau9.webp',
+        '/Stills/Mariage/Mariage1.webp',
+        '/Stills/Mariage/Mariage2.webp',
+        '/Stills/Mariage/Mariage3.webp',
+        '/Stills/Mariage/Mariage4.webp',
+        '/Stills/Mariage/Mariage5.webp',
       ]
     },
+    
     '7': {
       title: 'Gagner',
-      description: 'Victory and motion captured in still frames.',
+      description: '<strong>Crédits</strong><br/>Réalisation : Hugo Borel<br/>DOP : Lucas Geneveys',
       images: [
         '/Stills/Gagner/GagnerCestBien1.webp',
         '/Stills/Gagner/GagnerCestBien2.webp',
