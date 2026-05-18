@@ -112,7 +112,7 @@ const ColoDetail: React.FC = () => {
       description: '<strong>Crédits</strong><br/>Réalisation : Hugo Borel<br/>DOP : Lucas Geneveys',
       images: [
         '/Stills/Gagner/GagnerCestBien1.webp',
-        '/Stills/Gagner/GagnerCestBien2.webp',
+        '/Stills/Gagner/GagnerCestBien7.webp',
         '/Stills/Gagner/GagnerCestBien3.webp',
         '/Stills/Gagner/GagnerCestBien4.webp',
         '/Stills/Gagner/GagnerCestBien5.webp',
