@@ -39,7 +39,7 @@ const ColoDetail: React.FC = () => {
     },
     '6': {
       title: 'Mariage',
-      description: 'Editorial photography for the Mariage collection.',
+      description: '<strong>Credits</strong><br/>Réalisation : Augen<br/>Production : Call-me agency<br/>DOP : Valentin Deluy',
       images: [
         '/Stills/Mariage/Mariage1.webp',
         '/Stills/Mariage/Mariage2.webp',
@@ -92,8 +92,8 @@ const ColoDetail: React.FC = () => {
       ]
     },
     '2': {
-      title: 'AgeNouveau',
-      description: 'Modern aesthetics for the new era.',
+      title: 'Age Nouveau',
+      description: '<strong>Credits</strong><br/>Réalisation : Simon Bérard<br/>',
       images: [
         '/Stills/AgeNouveau/AgeNouveau1.webp',
         '/Stills/AgeNouveau/AgeNouveau3.webp',
