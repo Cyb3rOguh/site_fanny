@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Indiquez ici le dossier de build (généralement 'build' pour CRA, 'dist' pour Vite)
-          path: './build' 
+          path: './dist' 
           # Si vous utilisez Vite, changez la ligne ci-dessus par: path: './dist'
 
       - name: Deploy to GitHub Pages
