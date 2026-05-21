@@ -149,7 +149,7 @@ const ColoDetail: React.FC = () => {
         <div key={index} className="detail-grid-item">
           <img 
             src={imgSrc} 
-            alt={`${project.title} - Image ${index + 1}`} 
+            alt={`${project.title} - Vue ${index + 1}`}
             loading="lazy"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
