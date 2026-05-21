@@ -13,7 +13,7 @@ const Colo: React.FC = () => {
   const items: ColoItem[] = [
     { id: '1', image: '/Stills/CaballeroetJeanJass/CaballeroetJeanJass.webp', label: 'ZUSHILEAKS - Caballero & JeanJass feat. Chilly Gonzales' },
     { id: '2', image: '/Stills/AgeNouveau/AgeNouveau9.webp', label: 'Âge Nouveau' },
-    { id: '3', image: '/Stills/MiamiBass/MiamiBass8.webp', label: 'Miami Bass - Di-meh' },
+    { id: '3', image: '/Stills/MiamiBass/Miamibass8.webp', label: 'Miami Bass - Di-meh' },
     { id: '4', image: '/Stills/Rivella/Rivella2.webp', label: 'Vidéo pour Rivella' },
     { id: '5', image: '/Stills/HesitOut/HeistOut1.webp', label: 'Heist Out' },
     { id: '6', image: '/Stills/Mariage/Mariage3.webp', label: 'Mariage' },
